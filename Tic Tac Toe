@@ -25,15 +25,7 @@ seventh = pygame.draw.rect(screen, box_colour, (25, 425, 150, 150))
 eight = pygame.draw.rect(screen, box_colour, (225, 425, 150, 150))
 ninth = pygame.draw.rect(screen, box_colour, (425, 425, 150, 150))
 
-a = True  # To check whether the boxes are filled or not
-b = True
-c = True
-d = True
-e = True
-f = True
-g = True
-h = True
-i = True
+a=b=c=d=e=f=g=h=i= True  # To check whether the boxes are filled or not
 board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]  # Keeps track of the X and O positions
 
 # To Display who won
