@@ -1,1 +1,248 @@
+import pygame
 
+# Initialise
+pygame.init()
+screen = pygame.display.set_mode((600, 750))
+pygame.display.set_caption("TicTacToe")
+Running = True
+
+# X and O conditions
+x = pygame.image.load('X.png')
+o = pygame.image.load('O.png')
+
+box_colour = (255, 255, 255)
+draw_object = 'rect'
+
+first = pygame.draw.rect(screen, box_colour, (25, 25, 150, 150))
+second = pygame.draw.rect(screen, box_colour, (225, 25, 150, 150))
+third = pygame.draw.rect(screen, box_colour, (425, 25, 150, 150))
+
+fourth = pygame.draw.rect(screen, box_colour, (25, 225, 150, 150))
+fifth = pygame.draw.rect(screen, box_colour, (225, 225, 150, 150))
+sixth = pygame.draw.rect(screen, box_colour, (425, 225, 150, 150))
+
+seventh = pygame.draw.rect(screen, box_colour, (25, 425, 150, 150))
+eight = pygame.draw.rect(screen, box_colour, (225, 425, 150, 150))
+ninth = pygame.draw.rect(screen, box_colour, (425, 425, 150, 150))
+
+a = True  # To check whether the boxes are filled or not
+b = True
+c = True
+d = True
+e = True
+f = True
+g = True
+h = True
+i = True
+board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]  # Keeps track of the X and O positions
+
+# To Display who won
+
+gamefont = pygame.font.Font('freesansbold.ttf', 50)
+
+
+def game_over_1():
+    game_rover_1a = gamefont.render('Player 1 won', True, (255, 255, 255))
+    screen.blit(game_rover_1a, (135, 600))
+
+
+def game_over_2():
+    game_rover_2a = gamefont.render('Player 2 won', True, (255, 255, 255))
+    screen.blit(game_rover_2a, (135, 600))
+
+
+def press_space():
+    press_space_a = gamefont.render('Press Space to Exit', True, (255, 255, 255))
+    screen.blit(press_space_a, (50, 650))
+
+# While loop
+
+
+while Running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            Running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                print(board)
+                exit()
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pos = pygame.mouse.get_pos()
+            if first.collidepoint(pos) and a:
+                if draw_object == 'rect':
+                    screen.blit(x, (50, 50))
+                    draw_object = 'circle'
+                    board[0][0] = 1  # 1 signifies X is taken
+                else:
+                    screen.blit(o, (50, 50))
+                    draw_object = 'rect'
+                    board[0][0] = 2  # 2 signifies O is taken
+                a = False
+            if second.collidepoint(pos) and b:
+                if draw_object == 'rect':
+                    screen.blit(x, (250, 50))
+                    draw_object = 'circle'
+                    board[0][1] = 1
+                else:
+                    screen.blit(o, (250, 50))
+                    draw_object = 'rect'
+                    board[0][1] = 2
+                b = False
+            if third.collidepoint(pos) and c:
+                if draw_object == 'rect':
+                    screen.blit(x, (450, 50))
+                    draw_object = 'circle'
+                    board[0][2] = 1
+                else:
+                    screen.blit(o, (450, 50))
+                    draw_object = 'rect'
+                    board[0][2] = 2
+                c = False
+            if fourth.collidepoint(pos) and d:
+                if draw_object == 'rect':
+                    screen.blit(x, (50, 250))
+                    draw_object = 'circle'
+                    board[1][0] = 1
+                else:
+                    screen.blit(o, (50, 250))
+                    draw_object = 'rect'
+                    board[1][0] = 2
+                d = False
+            if fifth.collidepoint(pos) and e:
+                if draw_object == 'rect':
+                    screen.blit(x, (250, 250))
+                    draw_object = 'circle'
+                    board[1][1] = 1
+                else:
+                    screen.blit(o, (250, 250))
+                    draw_object = 'rect'
+                    board[1][1] = 2
+                e = False
+            if sixth.collidepoint(pos) and f:
+                if draw_object == 'rect':
+                    screen.blit(x, (450, 250))
+                    draw_object = 'circle'
+                    board[1][2] = 1
+                else:
+                    screen.blit(o, (450, 250))
+                    draw_object = 'rect'
+                    board[1][2] = 2
+                f = False
+            if seventh.collidepoint(pos) and g:
+                if draw_object == 'rect':
+                    screen.blit(x, (50, 450))
+                    draw_object = 'circle'
+                    board[2][0] = 1
+                else:
+                    screen.blit(o, (50, 450))
+                    draw_object = 'rect'
+                    board[2][0] = 2
+                g = False
+            if eight.collidepoint(pos) and h:
+                if draw_object == 'rect':
+                    screen.blit(x, (250, 450))
+                    draw_object = 'circle'
+                    board[2][1] = 1
+                else:
+                    screen.blit(o, (250, 450))
+                    draw_object = 'rect'
+                    board[2][1] = 2
+                h = False
+            if ninth.collidepoint(pos) and i:
+                if draw_object == 'rect':
+                    screen.blit(x, (450, 450))
+                    draw_object = 'circle'
+                    board[2][2] = 1
+                else:
+                    screen.blit(o, (450, 450))
+                    draw_object = 'rect'
+                    board[2][2] = 2
+                i = False
+    # Row Wise X
+    if board[0][0] == 1 and board[0][1] == 1 and board[0][2] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (0, 100), (600, 100), 9)
+        game_over_1()
+        press_space()
+
+    if board[1][0] == 1 and board[1][1] == 1 and board[1][2] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (0, 300), (600, 300), 9)
+        game_over_1()
+        press_space()
+
+    if board[2][0] == 1 and board[2][1] == 1 and board[2][2] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (0, 500), (600, 500), 9)
+        game_over_1()
+        press_space()
+
+    # Coloumn wise X
+    if board[0][0] == 1 and board[1][0] == 1 and board[2][0] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (100, 0), (100, 600), 9)
+        game_over_1()
+        press_space()
+
+    if board[0][1] == 1 and board[1][1] == 1 and board[2][1] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (300, 0), (300, 600), 9)
+        game_over_1()
+        press_space()
+
+    if board[0][2] == 1 and board[1][2] == 1 and board[2][2] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (500, 0), (500, 600), 9)
+        game_over_1()
+        press_space()
+
+    # Diagonally X
+    if board[0][0] == 1 and board[1][1] == 1 and board[2][2] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (0, 0), (600, 600), 9)
+        game_over_1()
+        press_space()
+
+    if board[0][2] == 1 and board[1][1] == 1 and board[2][0] == 1:
+        pygame.draw.line(screen, (0, 0, 0), (600, 0), (0, 600), 9)
+        game_over_1()
+        press_space()
+
+        # Row Wise O
+    if board[0][0] == 2 and board[0][1] == 2 and board[0][2] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (0, 100), (600, 100), 9)
+        game_over_2()
+        press_space()
+
+    if board[1][0] == 2 and board[1][1] == 2 and board[1][2] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (0, 300), (600, 300), 9)
+        game_over_2()
+        press_space()
+
+    if board[2][0] == 2 and board[2][1] == 2 and board[2][2] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (0, 500), (600, 500), 9)
+        game_over_2()
+        press_space()
+
+        # Coloumn wise O
+    if board[0][0] == 2 and board[1][0] == 2 and board[2][0] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (100, 0), (100, 600), 9)
+        game_over_2()
+        press_space()
+
+    if board[0][1] == 2 and board[1][1] == 2 and board[2][1] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (300, 0), (300, 600), 9)
+        game_over_2()
+        press_space()
+
+    if board[0][2] == 2 and board[1][2] == 2 and board[2][2] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (500, 0), (500, 600), 9)
+        game_over_2()
+        press_space()
+
+        # Diagonally O
+    if board[0][0] == 2 and board[1][1] == 2 and board[2][2] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (0, 0), (600, 600), 9)
+        game_over_2()
+        press_space()
+
+    if board[0][2] == 2 and board[1][1] == 2 and board[2][0] == 2:
+        pygame.draw.line(screen, (0, 0, 0), (600, 0), (0, 600), 9)
+        game_over_2()
+        press_space()
+
+    pygame.display.update()
