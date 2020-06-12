@@ -31,6 +31,7 @@ board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]  # Keeps track of the X and O position
 # To Display who won
 
 gamefont = pygame.font.Font('freesansbold.ttf', 50)
+draw = True
 
 
 def game_over_1():
@@ -43,9 +44,15 @@ def game_over_2():
     screen.blit(game_rover_2a, (135, 600))
 
 
+def game_draw():
+    press_space_a = gamefont.render('DRAW', True, (255, 255, 255))
+    screen.blit(press_space_a, (225, 600))
+
+
 def press_space():
     press_space_a = gamefont.render('Press Space to Exit', True, (255, 255, 255))
     screen.blit(press_space_a, (50, 650))
+
 
 # While loop
 
@@ -156,85 +163,126 @@ while Running:
         pygame.draw.line(screen, (0, 0, 0), (0, 100), (600, 100), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[1][0] == 1 and board[1][1] == 1 and board[1][2] == 1:
         pygame.draw.line(screen, (0, 0, 0), (0, 300), (600, 300), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[2][0] == 1 and board[2][1] == 1 and board[2][2] == 1:
         pygame.draw.line(screen, (0, 0, 0), (0, 500), (600, 500), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
-    # Coloumn wise X
+    # Column wise X
     if board[0][0] == 1 and board[1][0] == 1 and board[2][0] == 1:
         pygame.draw.line(screen, (0, 0, 0), (100, 0), (100, 600), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[0][1] == 1 and board[1][1] == 1 and board[2][1] == 1:
         pygame.draw.line(screen, (0, 0, 0), (300, 0), (300, 600), 9)
         game_over_1()
         press_space()
+        draw = False
 
     if board[0][2] == 1 and board[1][2] == 1 and board[2][2] == 1:
         pygame.draw.line(screen, (0, 0, 0), (500, 0), (500, 600), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     # Diagonally X
     if board[0][0] == 1 and board[1][1] == 1 and board[2][2] == 1:
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (600, 600), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[0][2] == 1 and board[1][1] == 1 and board[2][0] == 1:
         pygame.draw.line(screen, (0, 0, 0), (600, 0), (0, 600), 9)
         game_over_1()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
         # Row Wise O
     if board[0][0] == 2 and board[0][1] == 2 and board[0][2] == 2:
         pygame.draw.line(screen, (0, 0, 0), (0, 100), (600, 100), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[1][0] == 2 and board[1][1] == 2 and board[1][2] == 2:
         pygame.draw.line(screen, (0, 0, 0), (0, 300), (600, 300), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[2][0] == 2 and board[2][1] == 2 and board[2][2] == 2:
         pygame.draw.line(screen, (0, 0, 0), (0, 500), (600, 500), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
-        # Coloumn wise O
+        # Column wise O
     if board[0][0] == 2 and board[1][0] == 2 and board[2][0] == 2:
         pygame.draw.line(screen, (0, 0, 0), (100, 0), (100, 600), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[0][1] == 2 and board[1][1] == 2 and board[2][1] == 2:
         pygame.draw.line(screen, (0, 0, 0), (300, 0), (300, 600), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[0][2] == 2 and board[1][2] == 2 and board[2][2] == 2:
         pygame.draw.line(screen, (0, 0, 0), (500, 0), (500, 600), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
         # Diagonally O
     if board[0][0] == 2 and board[1][1] == 2 and board[2][2] == 2:
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (600, 600), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
 
     if board[0][2] == 2 and board[1][1] == 2 and board[2][0] == 2:
         pygame.draw.line(screen, (0, 0, 0), (600, 0), (0, 600), 9)
         game_over_2()
         press_space()
+        a = b = c = d = e = f = g = h = i = False
+        draw = False
+
+    # Check if the game is a draw
+    count = 0
+    for row in board:
+        for row1 in row:
+            if row1 != 0:
+                count += 1
+                if count == 9 and draw == True:
+                    game_draw()
+                    press_space()
 
     pygame.display.update()
