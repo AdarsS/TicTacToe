@@ -59,6 +59,7 @@ def check_win():
         # Coloumn wise
         elif (board[0][0] == 1 and board[1][0] == 1 and board[2][0] == 1) or (board[0][0] == -1 and board[1][0] == -1 and board[2][0] == -1):
             pygame.draw.line(screen, (0, 0, 0), (100, 0), (100, 600), 9)
+            game_over()
         elif (board[0][1] == 1 and board[1][1] == 1 and board[2][1] == 1) or (board[0][1] == -1 and board[1][1] == -1 and board[2][1] == -1):
             pygame.draw.line(screen, (0, 0, 0), (300, 0), (300, 600), 9)
             game_over()
